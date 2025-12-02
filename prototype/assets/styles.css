@@ -260,7 +260,7 @@ a:focus-visible, button:focus-visible, [role="button"]:focus-visible { outline: 
 .post time { color: var(--color-text-muted); font-variant-numeric: tabular-nums; }
 
 /* CTA */
-.cta { background: linear-gradient(180deg, rgba(42,156,160,.08), rgba(42,156,160,.02)); padding-block: clamp(2.5rem, 5vw, 4rem); text-align: center; }
+.cta { background: linear-gradient(180deg, rgba(255,240,248,.45), rgba(255,240,248,.15)); padding-block: clamp(2.5rem, 5vw, 4rem); text-align: center; }
 .cta__title { margin: 0 0 .4rem; font-size: clamp(1.4rem, 2vw, 1.9rem); }
 .cta__text { margin: 0 0 var(--space-5); color: var(--color-text-muted); }
 .cta__actions { display: inline-flex; gap: var(--space-4); }
