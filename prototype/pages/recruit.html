@@ -100,11 +100,33 @@
         <div class="container">
           <h2 class="section__title">活動しやすい環境（安全・プライバシー）</h2>
           <ul>
-            <li>完全自由シフト（生活優先で無理なく活動できます）</li>
+            <li>完全自由シフト 生活優先で無理なく活動できます。</li>
             <li>身バレ対策（個別対策のサポートを徹底）</li>
             <li>ホテル派遣が基本（衛生面・安全面に優れた環境）</li>
             <li>マンション派遣の場合（建物のグレード・安全性を確認の上でご案内）</li>
           </ul>
+          <script>
+            (function(){
+              try {
+                var container = document.currentScript.parentElement;
+                var list = container.querySelector('ul');
+                if (list) list.style.display = 'none';
+                var grid = document.createElement('div');
+                grid.className = 'grid-boxes';
+                function box(title, body){
+                  var el = document.createElement('div');
+                  el.className = 'box';
+                  el.innerHTML = '<h3 style="margin:0 0 .25rem">'+title+'</h3><p style="margin:0">'+body+'</p>';
+                  return el;
+                }
+                grid.appendChild(box('完全自由シフト', '生活優先で無理なく活動できます。'));
+                grid.appendChild(box('身バレ対策', '個別対策のサポートを徹底。'));
+                grid.appendChild(box('ホテル派遣が基本', '衛生面安全面に優れた環境で活動。'));
+                grid.appendChild(box('マンション派遣の場合', '建物のグレード安全性を確認した上でご案内しています。'));
+                container.appendChild(grid);
+              } catch(e) { /* noop */ }
+            })();
+          </script>
         </div>
       </section>
 
@@ -181,6 +203,57 @@
       "inLanguage": "ja"
     }
     </script>
+    <script>
+      (function(){
+        try {
+          var section = Array.from(document.querySelectorAll('section')).find(function(s){
+            var a = s.getAttribute('aria-label') || '';
+            return a.indexOf('活動スタイル') !== -1;
+          });
+          if (!section) return;
+          var c = section.querySelector('.container');
+          if (!c) return;
+          var h2 = c.querySelector('h2.section__title');
+          if (!h2) return;
+          var nodes = [];
+          for (var n = h2.nextElementSibling; n; ) { var next = n.nextElementSibling; nodes.push(n); n = next; }
+          if (!nodes.length) return;
+          var grid = document.createElement('div');
+          grid.className = 'grid-boxes grid-boxes--3';
+          var box = null;
+          nodes.forEach(function(node){
+            if (node.tagName === 'H3') {
+              if (box) grid.appendChild(box);
+              box = document.createElement('div');
+              box.className = 'box';
+            }
+            if (!box) { box = document.createElement('div'); box.className = 'box'; }
+            box.appendChild(node);
+          });
+          if (box) grid.appendChild(box);
+          c.appendChild(grid);
+          var boxes = Array.from(grid.children);
+          var o3 = boxes.find(function(b){
+            var h3 = b.querySelector('h3');
+            return h3 && /O3/i.test((h3.textContent||''));
+          });
+          if (o3) {
+            var targetP = Array.from(o3.querySelectorAll('p')).find(function(p){
+              var t = (p.textContent||'');
+              return t.indexOf('FUWALY') !== -1 || t.indexOf('気持ちの美しさ') !== -1;
+            }) || Array.from(o3.querySelectorAll('p')).slice(-1)[0];
+            if (targetP) {
+              var wrap = document.createElement('div');
+              wrap.style.marginTop = 'var(--space-5)';
+              wrap.appendChild(targetP);
+              c.appendChild(wrap);
+            }
+          }
+        } catch(e) { /* noop */ }
+      })();
+    </script>
+    <script>
+      (function(){ try { var el = document.getElementById('apply-form'); if (el) { el.innerHTML=''; } } catch(e){} })();
+    </script>
   </body>
   </html>
-

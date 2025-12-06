@@ -46,6 +46,154 @@
         </div>
       </section>
 
+      <script>
+        (function(){
+          try {
+            var hero = (function(){
+              var secs = document.querySelectorAll('main section');
+              for (var i=0;i<secs.length;i++){
+                if (secs[i].querySelector('h1.section__title')) return secs[i];
+              }
+              return null;
+            })();
+            if (!hero) return;
+            hero.classList.add('company-hero');
+            var h1 = hero.querySelector('h1');
+            if (h1) { h1.className = 'company-hero__title'; h1.innerHTML = '<strong>運営者情報</strong>'; }
+            var p = hero.querySelector('p');
+            if (p) { p.className = 'company-hero__intro'; p.innerHTML = '東京レーベルフワリーは<br />清楚素人未経験の女性を守り、<br />誠実にご案内するための運営体制を整えています。'; }
+          } catch(e) { /* no-op */ }
+        })();
+      </script>
+      <script>
+        document.addEventListener('DOMContentLoaded', function(){
+          try {
+            var sec = Array.from(document.querySelectorAll('section')).find(function(s){
+              var t = (s.getAttribute('aria-label')||'') + (s.textContent||'');
+              return t.indexOf('ブランド理念') !== -1;
+            });
+            if (!sec) return;
+            sec.className = 'brand-vision';
+            var container = sec.querySelector('.container');
+            if (!container) { container = document.createElement('div'); container.className='container'; sec.appendChild(container); }
+            container.innerHTML = ''+
+              '<div class="brand-vision__wrap">'+
+                '<div class="brand-vision__accent"><div class="brand-vision__dot"></div></div>'+
+                '<h2 class="brand-vision__title">ブランド理念</h2>'+
+                '<p class="brand-vision__text">東京レーベルグループは、\n女性をつくらず、守り、尊重する を理念とし、\n清潔誠実安心を最も大切にする運営を行っています。</p>'+
+                '<p class="brand-vision__text">すべての女性が「素人のままで自然体」でいられる環境づくり。\nそして会員様には「静かで上質な時間」をお届けできるよう、\n日々、改善と育成を続けております。</p>'+
+              '</div>';
+          } catch(e) { /* no-op */ }
+        });
+      </script>
+      <script>
+        document.addEventListener('DOMContentLoaded', function(){
+          try {
+            var brand = Array.from(document.querySelectorAll('section')).find(function(s){
+              return (s.textContent||'').indexOf('ブランド理念') !== -1;
+            });
+            if (!brand) return;
+            var cta = document.createElement('section');
+            cta.className = 'section';
+            cta.setAttribute('aria-label','CTA');
+            cta.innerHTML = '<div class="container" style="display:flex; gap:1rem; flex-wrap:wrap; justify-content:center">\
+              <a class="btn btn--outline-gold" href="reserve.html">ご予約はこちら</a>\
+              <a class="btn btn--outline-gold" href="members.html">members登録はこちら</a>\
+            </div>';
+            brand.insertAdjacentElement('afterend', cta);
+          } catch(e) { /* no-op */ }
+        });
+      </script>
+      <script>
+        document.addEventListener('DOMContentLoaded', function(){
+          try {
+            var fc = Array.from(document.querySelectorAll('section')).find(function(s){
+              var t = (s.textContent||'') + (s.innerHTML||'');
+              return t.indexOf('FC') !== -1 || t.indexOf('フランチャイズ') !== -1 || t.indexOf('tlfc-p.com') !== -1;
+            });
+            if (!fc) return;
+            fc.classList.add('section','section--sakura');
+            var container = fc.querySelector('.container') || fc;
+            container.innerHTML = ''+
+              '<h2 class="section__title">FC（フランチャイズ）事業</h2>'+
+              '<p><strong>東京レーベル フランチャイズプロジェクト</strong><br />'+
+              '<a href="https://www.tlfc-p.com/" target="_blank" rel="nofollow noopener">https://www.tlfc-p.com/</a></p>'+
+              '<p>高級ブランドの運営哲学を体系化し、<br />適性のある運営者様向けにフランチャイズ提供を行っています。</p>';
+          } catch(e) { /* no-op */ }
+        });
+      </script>
+      <script>
+        document.addEventListener('DOMContentLoaded', function(){
+          try {
+            var sec = document.querySelector('section[aria-label*="所属ブランド一覧"]') ||
+                      Array.from(document.querySelectorAll('section')).find(function(s){ return (s.textContent||'').indexOf('直営') !== -1 && s.querySelector('ul'); });
+            if (!sec) return;
+            var container = sec.querySelector('.container') || sec;
+            var html = ''+
+              '<h2 class="section__title">所属ブランド一覧（直営）</h2>'+
+              '<ul class="brands-list">'+
+                '<li>東京レーベルフワリー（本店） — <a href="https://aoyama-fuwaly.com/" target="_blank" rel="nofollow noopener">https://aoyama-fuwaly.com/</a></li>'+
+                '<li>淑女たちの背徳 — <a href="https://www.roppongi-purely.com/" target="_blank" rel="nofollow noopener">https://www.roppongi-purely.com/</a></li>'+
+                '<li>名門大学物語（東京横浜） — <a href="https://www.meimondai.com/" target="_blank" rel="nofollow noopener">https://www.meimondai.com/</a></li>'+
+                '<li>名門大学物語（大阪） — <a href="https://www.meimondai01.com/" target="_blank" rel="nofollow noopener">https://www.meimondai01.com/</a></li>'+
+                '<li>アナザーフワリー — <a href="https://www.another-fuwaly.com/" target="_blank" rel="nofollow noopener">https://www.another-fuwaly.com/</a></li>'+
+                '<li>ザセクシー — <a href="https://www.the-sexy.com/" target="_blank" rel="nofollow noopener">https://www.the-sexy.com/</a></li>'+
+              '</ul>';
+            container.innerHTML = html;
+          } catch(e) { /* no-op */ }
+        });
+      </script>
+
+      <script>
+        (function(){
+          try {
+            var secs = document.querySelectorAll('main section');
+            if (secs.length < 2) return;
+            var info = secs[1];
+            var container = info.querySelector('.container');
+            if (!container) return;
+            var h2 = container.querySelector('h2.section__title');
+            if (!h2) return;
+            h2.textContent = '運営者情報（公式）';
+            var n = h2.nextElementSibling;
+            while (n) { var nx = n.nextElementSibling; n.remove(); n = nx; }
+            var mk = function(html){ var d=document.createElement('div'); d.innerHTML=html; return d.firstChild; };
+            container.appendChild(mk('<p><strong>運営者名</strong><br />上杉 達也（うえすぎ たつや）<br />Tokyo Label Group 代表</p>'));
+            container.appendChild(mk('<p><strong>運営会社</strong><br />Tokyo Label Group（東京レーベルグループ）</p>'));
+            container.appendChild(mk('<p><strong>所在地</strong><br />東京都中央区日本橋浜町3丁目</p>'));
+          } catch(e) { /* no-op */ }
+        })();
+      </script>
+
+      <script>
+        (function(){
+          try {
+            var secs = document.querySelectorAll('main section');
+            if (secs.length < 2) return;
+            var info = secs[1];
+            var section = document.createElement('section');
+            section.className = 'section s-normal';
+            section.setAttribute('aria-label','連絡先・営業時間');
+            section.style.paddingBlock = 'clamp(120px, 12vw, 160px)';
+            section.innerHTML = '<div class="container">\
+              <div class="gold-line" style="margin-bottom: var(--space-5);"></div>\
+              <h2 class="section__title">連絡先・営業時間</h2>\
+              <div class="two-col">\
+                <div>\
+                  <h3 class="serif">連絡先</h3>\
+                  <p>電話：090-5207-2855<br />メール：<a href="mailto:info@aoyama-fuwaly.com">info@aoyama-fuwaly.com</a><br />LINE：<a href="https://line.me/ti/p/zO9ITgCT8S" target="_blank" rel="nofollow noopener">https://line.me/ti/p/zO9ITgCT8S</a></p>\
+                </div>\
+                <div>\
+                  <h3 class="serif">営業時間</h3>\
+                  <p>お届け時間：10：00～23：00（到着）<br />フロント対応：10:00〜20:00</p>\
+                </div>\
+              </div>\
+            </div>';
+            info.insertAdjacentElement('afterend', section);
+          } catch(e) { /* no-op */ }
+        })();
+      </script>
+
       <!-- 運営者情報 -->
       <section class="section s-normal" aria-label="運営者情報">
         <div class="container">
@@ -91,13 +239,7 @@
         </div>
       </section>
 
-      <!-- CTA -->
-      <section class="section s-normal" aria-label="CTA">
-        <div class="container" style="display:flex; gap:1rem; flex-wrap:wrap">
-          <a class="btn btn--gold" href="reserve.html">ご予約はこちら</a>
-          <a class="btn btn--gold" href="members.html">members登録はこちら</a>
-        </div>
-      </section>
+      
     </main>
 
     <footer class="site-footer" role="contentinfo">
@@ -140,4 +282,3 @@
     </script>
   </body>
   </html>
-

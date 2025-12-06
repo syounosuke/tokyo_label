@@ -47,10 +47,31 @@
 清楚で上品な素人女性が、自然体で心を満たしていく。
 未経験の女性たちが自分らしく輝ける
 それは、東京が誇る新しい「高級デリヘル」のかたち。</p>
-            <div class="hero__actions">
-              <a class="btn btn--primary" href="../pages/members.html">MEMBERS</a>
-              <a class="btn btn--ghost" href="../pages/reserve.html">RESERVE</a>
-            </div>
+            <!-- hero__actions removed as requested -->
+            <script>
+              (function(){
+                try {
+                  var el = document.querySelector('.top-hero__title');
+                  if (!el) return;
+                  var html = el.innerHTML;
+                  el.innerHTML = html.replace(/<br\s*\/>\s*([^<]+)/i, '<br /><span class="top-hero__tagline">- $1 -</span>');
+                } catch (e) { /* no-op */ }
+              })();
+            </script>
+            <script>
+              (function(){
+                try {
+                  var titleEl = document.querySelector('.top-hero__title');
+                  if (titleEl) {
+                    titleEl.innerHTML = '静かな光に包まれながら、<br /><span class="top-hero__tagline">- 清楚と色香のフラッグシップブランド -</span>';
+                  }
+                  var bodyEl = document.querySelector('.top-hero__body');
+                  if (bodyEl) {
+                    bodyEl.textContent = '清楚で上品な素人女性が、自然体で心を満たしていく。清楚で上品な素人女性が、自然体で心を満たしていく。\n未経験の女性たちが自分らしく輝ける\nそれは、東京が誇る新しい「高級デリヘル」のかたち。';
+                  }
+                } catch (e) { /* no-op */ }
+              })();
+            </script>
           </div>
           <figure class="hero__media" aria-hidden="true">
             <img src="https://picsum.photos/seed/fuwaly/960/640" alt="" />
@@ -62,7 +83,7 @@
       <div style="height:40px"></div>
 
       <!-- members セクション（Hero直下）-->
-      <section class="section section--sakura" aria-label="members">
+      <section class="section section--sakura section--center" aria-label="members">
         <div class="container">
           <h2 class="section__title">members登録から始まる、清楚と品格の世界。</h2>
           <p>ご予約までがスムーズに進行します。<br />ご登録時 <strong>5,000円割引。</strong><br />EメールまたはLINEで簡単にご登録いただけます。<br /><strong>reserve限定 未公開写真をご送付</strong></p>
@@ -73,9 +94,10 @@
       </section>
 
       <!-- Ladies セクション（導線） -->
-      <section class="section" aria-label="Ladies">
+      <section class="section section--center" aria-label="Ladies">
         <div class="container">
           <h2 class="section__title">清楚であること。美しいこと。それがフワリーの本質。</h2>
+          
           <p>一瞬の微笑みさえもブランドの一部。<br />その佇まいは、日本が誇る「余白の美」。<br />未経験から始めた女性も多く、<br />自然体のまま心を通わせる時間を大切にしています。</p>
           <div class="actions" style="margin-top:1rem">
             <a class="btn btn--primary" href="../pages/lineup.html">女性一覧を見る</a>
@@ -84,7 +106,7 @@
       </section>
 
       <!-- FAQ セクション（軽い導線） -->
-      <section class="section" aria-label="FAQ">
+      <section class="section section--center" aria-label="FAQ">
         <div class="container">
           <h2 class="section__title">安心してお過ごしいただくために。</h2>
           <p>「未経験の女性は多いですか？」「東京以外からの利用は可能ですか？」<br />初めての方にもわかりやすく、フワリーのしくみや流れをまとめています。</p>
@@ -95,7 +117,7 @@
       </section>
 
       <!-- CTA セクション（下部） -->
-      <section class="section section--sakura" aria-label="CTA">
+      <section class="section section--sakura section--center" aria-label="CTA">
         <div class="container">
           <p>上質な時間は、ここから始まります。<br />お好みの方法で、あなただけの物語を。</p>
           <div class="actions" style="margin-top:1rem; display:flex; gap:1rem; flex-wrap:wrap;">

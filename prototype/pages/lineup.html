@@ -30,6 +30,42 @@
         </nav>
       </div>
     </header>
+    <script>
+      document.addEventListener('DOMContentLoaded', function(){
+        try {
+          var h = document.querySelector('header.page-hero');
+          if (!h) return;
+          var titleText = (h.querySelector('.page-hero__title')||{}).textContent || 'LADIES';
+          var leadText = (h.querySelector('.page-hero__lead')||{}).textContent || '';
+          var sec = document.createElement('section');
+          sec.className = 'top-hero';
+          var container = document.createElement('div');
+          container.className = 'container';
+          var content = document.createElement('div');
+          content.className = 'hero__content';
+          var h1 = document.createElement('h1');
+          h1.className = 'top-hero__title';
+          h1.textContent = titleText;
+          var p = document.createElement('p');
+          p.className = 'top-hero__body';
+          p.textContent = leadText;
+          content.appendChild(h1); content.appendChild(p);
+          var fig = document.createElement('figure');
+          fig.className = 'hero__media'; fig.setAttribute('aria-hidden','true');
+          fig.innerHTML = '<img src="https://picsum.photos/seed/ladies/960/640" alt="" />';
+          container.appendChild(content);
+          container.appendChild(fig);
+          var btnWrap = document.createElement('div');
+          btnWrap.className = 'top-hero__btn';
+          btnWrap.innerHTML = '<a class="btn btn--primary" href="#list">女性一覧を見る</a>';
+          container.appendChild(btnWrap);
+          sec.appendChild(container);
+          h.replaceWith(sec);
+          var listGrid = document.querySelector('main .grid--cards');
+          if (listGrid) { var listSec = listGrid.closest('section'); if (listSec) listSec.id = 'list'; }
+        } catch(e) {}
+      });
+    </script>
 
     <header class="page-hero">
       <div class="container">
@@ -42,6 +78,16 @@
       </div>
     </header>
 
+    <script>
+      document.addEventListener('DOMContentLoaded', function(){
+        try {
+          var t = document.querySelector('.top-hero__title');
+          if (t) t.textContent = '清楚であること。美しいこと。それがフワリーの本質。';
+          var b = document.querySelector('.top-hero__body');
+          if (b) b.textContent = '一瞬の微笑みさえもブランドの一部。\nその佇まいは、日本が誇る「余白の美」。\n未経験から始めた女性も多く、\n自然体のまま心を通わせる時間を大切にしています。';
+        } catch(e) {}
+      });
+    </script>
     <main id="main" tabindex="-1">
       <section class="section s-normal" aria-label="商品一覧">
         <div class="container grid grid--cards">
